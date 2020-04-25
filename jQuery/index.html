@@ -27,17 +27,20 @@
 <script>
 $(document).ready(function()
 {
+    const classActive="active";
     $(".dot").on("click", function()
     {
-        $(".dot, .slide").removeClass("active");
-        $(this).addClass("active");
-        const id = $(this).data('index');
+        const dotThis = $(this);
+        $(".dot, .slide").removeClass(classActive);
+        dotThis.addClass(classActive);
+        const id = dotThis.data('index');
         $(".slide").each(function(i,e)
         {
-            const slideID = $(this).data('index');
+            const slideThis = $(this);
+            const slideID = slideThis.data('index');
             if(slideID === id)
             {
-               $(this).addClass("active");
+                slideThis.addClass(classActive);
             }
         });
     });
