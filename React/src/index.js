@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import Slide from "./components/slide";
 // import Dot from "./components/dot";
-import './style.css';
+import '../../style.css';
 
 const images = [
     require("../../images/rsz_beautiful-beauty-blue-bright-414612.jpg"),
