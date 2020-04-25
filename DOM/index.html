@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider using HTML5 DOM</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="slider-wrapper">
+        <div class="slider">
+            <div data-index="1" class="slide active"><img src="../images/rsz_beautiful-beauty-blue-bright-414612.jpg" /></div>
+            <div data-index="2" class="slide"><img src="../images/rsz_bloom-blooming-blossom-blur-462118.jpg" /></div>
+            <div data-index="3" class="slide"><img src="../images/rsz_landscape-nature-wilderness-view-68147.jpg" /></div>
+            <div data-index="4" class="slide"><img src="../images/rsz_trees-in-park-257360.jpg" /></div>
+        </div>
+        <div class="slide-pagination">
+            <div data-index="1" class="dot active"></div>
+            <div data-index="2" class="dot"></div>
+            <div data-index="3" class="dot"></div>
+            <div data-index="4" class="dot"></div>
+        </div>
+    </div>
+</body>
+<script>
+    const dots = document.querySelectorAll(".dot");
+    const slides = document.querySelectorAll(".slide");
+    for (let i = 0; i < dots.length; i++) 
+    {
+        dots[i].addEventListener("click", (e)=>  
+        {
+            const activeIndex = dots[i].getAttribute("data-index");
+            for (let i = 0; i < dots.length; i++) 
+            {
+                dots[i].setAttribute("class", "dot");
+            }
+            for (let i = 0; i < slides.length; i++) 
+            {
+                slides[i].setAttribute("class", "slide");
+                if(slides[i].getAttribute("data-index") === activeIndex){
+                    slides[i].setAttribute("class", "slide active");
+                }
+            }
+            dots[i].setAttribute("class", "dot active");
+        });
+    }
+</script>
+</html>

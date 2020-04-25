@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider using jQuery framework</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="slider-wrapper">
+        <div class="slider">
+            <div data-index="1" class="slide active"><img src="../images/rsz_beautiful-beauty-blue-bright-414612.jpg" /></div>
+            <div data-index="2" class="slide"><img src="../images/rsz_bloom-blooming-blossom-blur-462118.jpg" /></div>
+            <div data-index="3" class="slide"><img src="../images/rsz_landscape-nature-wilderness-view-68147.jpg" /></div>
+            <div data-index="4" class="slide"><img src="../images/rsz_trees-in-park-257360.jpg" /></div>
+        </div>
+        <div class="slide-pagination">
+            <div data-index="1" class="dot active"></div>
+            <div data-index="2" class="dot"></div>
+            <div data-index="3" class="dot"></div>
+            <div data-index="4" class="dot"></div>
+        </div>
+    </div>
+</body>
+<script>
+$(document).ready(function()
+{
+    $(".dot").on("click", function()
+    {
+        $(".dot, .slide").removeClass("active");
+        $(this).addClass("active");
+        const id = $(this).data('index');
+        $(".slide").each(function(i,e)
+        {
+            const slideID = $(this).data('index');
+            if(slideID === id)
+            {
+               $(this).addClass("active");
+            }
+        });
+    });
+});
+</script>
+</html>

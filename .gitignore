@@ -1,0 +1,5 @@
+# dependencies
+/React/node_modules
+
+# production
+/React/dist
