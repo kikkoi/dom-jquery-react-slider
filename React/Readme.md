@@ -1,5 +1,11 @@
 ## Available Scripts
 
+Installation
+
+### `npm install`
+
+> **NOTE:** Node.js 10.* is required
+
 In the project directory, you can run:
 
 ### `npm start`
