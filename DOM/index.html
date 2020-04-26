@@ -24,26 +24,30 @@
     </div>
 </body>
 <script>
-    const dots = document.querySelectorAll(".dot");
-    const slides = document.querySelectorAll(".slide");
-    for (let i = 0; i < dots.length; i++) 
-    {
-        dots[i].addEventListener("click", (e)=>  
-        {
-            const activeIndex = dots[i].getAttribute("data-index");
-            for (let i = 0; i < dots.length; i++) 
-            {
-                dots[i].setAttribute("class", "dot");
-            }
-            for (let i = 0; i < slides.length; i++) 
-            {
-                slides[i].setAttribute("class", "slide");
-                if(slides[i].getAttribute("data-index") === activeIndex){
-                    slides[i].setAttribute("class", "slide active");
-                }
-            }
-            dots[i].setAttribute("class", "dot active");
+    activeSwitcher = (element) => {
+        element.addEventListener('click', event => {
+            const clickedElement = event.target;
+            const activeClass = '.active';
+            if (clickedElement.matches(activeClass)) return;
+
+            const activeElements = document.querySelectorAll(activeClass);
+            removeActiveClassesFrom(activeElements);
+
+            const dataIndexAttribute = 'data-index';
+            const clickedDataIndexValue = clickedElement.getAttribute(dataIndexAttribute);
+            const indexedElementsSelector = `[${dataIndexAttribute}="${clickedDataIndexValue}"]`;
+            addActiveClassesTo(indexedElementsSelector);
         });
     }
+
+    removeActiveClassesFrom = (elements) => elements.forEach(element => element.classList.remove('active'))
+
+    addActiveClassesTo = (selector) => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => element.classList.add('active'))
+    }
+
+    const dots = document.querySelectorAll(`.dot`);
+    dots.forEach(dot => activeSwitcher(dot));
 </script>
 </html>
