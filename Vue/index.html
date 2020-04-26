@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider using Vue framework</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+</head>
+<body>
+    <h1>Slider using Vue framework</h1>
+    <div class="slider-wrapper">
+        <div class="slider">
+            <div class="slide" v-for="(slide, index) in slides" v-bind:class="getActiveClass(index)">
+                <img v-bind:src="slide.image" />
+            </div>
+        </div>
+        <div class="slide-pagination">
+            <div class="dot" v-for="(slide, index) in slides" @click="setActiveSlide(index)" v-bind:class="getActiveClass(index)">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var slider = new Vue({
+        el: '.slider-wrapper',
+        data: {
+            activeSlide: 0,
+            slides: [
+                { image: '../images/rsz_beautiful-beauty-blue-bright-414612.jpg' },
+                { image: '../images/rsz_bloom-blooming-blossom-blur-462118.jpg' },
+                { image: '../images/rsz_landscape-nature-wilderness-view-68147.jpg' },
+                { image: '../images/rsz_trees-in-park-257360.jpg' }
+            ]
+        },
+        methods: {
+            setActiveSlide: function (index) {
+                this.activeSlide = index
+            },
+            getActiveClass: function (index) {
+                if (index != this.activeSlide) return;
+
+                return 'active'
+            }
+        }
+    })
+</script>
+</html>
